@@ -3,7 +3,7 @@
  * https://jestjs.io/docs/configuration
  */
 
-import type { Config } from 'jest';
+import type { Config } from "jest";
 
 const config: Config = {
   // All imported modules in your tests should be mocked automatically
@@ -16,16 +16,13 @@ const config: Config = {
   // cacheDirectory: "/tmp/jest_rs",
 
   // Automatically clear mock calls, instances, contexts and results before every test
-  clearMocks: true,
 
   // Indicates whether the coverage information should be collected while executing the test
-  collectCoverage: true,
 
   // An array of glob patterns indicating a set of files for which coverage information should be collected
   // collectCoverageFrom: undefined,
 
   // The directory where Jest should output its coverage files
-  coverageDirectory: 'coverage',
 
   // An array of regexp pattern strings used to skip coverage collection
   // coveragePathIgnorePatterns: [
@@ -33,7 +30,6 @@ const config: Config = {
   // ],
 
   // Indicates which provider should be used to instrument code for coverage
-  coverageProvider: 'v8',
 
   // A list of reporter names that Jest uses when writing coverage reports
   // coverageReporters: [
@@ -123,7 +119,6 @@ const config: Config = {
   // restoreMocks: false,
 
   // The root directory that Jest should scan for tests and modules within
-  rootDir: './src',
 
   // A list of paths to directories that Jest should use to search for files in
   // roots: [
@@ -175,9 +170,6 @@ const config: Config = {
   // testRunner: "jest-circus/runner",
 
   // A map from regular expressions to paths to transformers
-  transform: {
-    '^.+\\.(t|j)sx?$': '@swc/jest',
-  },
 
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
   // transformIgnorePatterns: [
@@ -196,6 +188,35 @@ const config: Config = {
 
   // Whether to use watchman for file crawling
   // watchman: true,
+  moduleFileExtensions: ["js", "json", "ts"],
+  rootDir: "./src",
+  testRegex: ".*\\..*spec\\.ts$",
+  transform: {
+    "^.+\\.(t|j)s$": "@swc/jest",
+  },
+  collectCoverageFrom: ["**/*.(t|j)s"],
+  coverageDirectory: "../coverage",
+  coveragePathIgnorePatterns: [
+    "/node_modules/",
+    ".interface.ts",
+    "shared/testing",
+    "shared-module/testing",
+    "validator-rules.ts",
+    "-fixture.ts",
+    ".input.ts",
+    ".d.ts",
+  ],
+  coverageThreshold: {
+    global: {
+      statements: 80,
+      branches: 80,
+      functions: 80,
+      lines: 80,
+    },
+  },
+  testEnvironment: "node",
+  coverageProvider: "v8",
+  clearMocks: true,
 };
 
 export default config;
