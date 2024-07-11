@@ -1,5 +1,5 @@
 import { UserTypeOrmRepository } from "../../../infrastructure/user/repository/typeorm/user-typeorm.repository";
-import { IUseCase } from "../../../shared/application/IUseCase.interface";
+import { IUseCase } from "../../../shared/application/usecase.interface";
 import { BcryptService } from "../../../shared/infrastructure/services/bcrypt/bcrypt.service";
 import { SignInInput } from "./sign-in.input";
 import { SignInOutput } from "./sign-in.output";

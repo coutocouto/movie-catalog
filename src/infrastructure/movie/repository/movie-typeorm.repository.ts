@@ -17,7 +17,13 @@ export class MovieTypeOrmRepository implements IMovieRepository {
     private movieModelRepository: Repository<MovieModel>,
   ) {}
 
-  sortableFields: string[] = ["title", "category", "genre", "createdAt"];
+  sortableFields: string[] = [
+    "title",
+    "category",
+    "genre",
+    "releaseDate",
+    "createdAt",
+  ];
 
   async create(entity: Movie): Promise<Movie> {
     const model = MovieModelMapper.toModel(entity);
@@ -58,16 +64,18 @@ export class MovieTypeOrmRepository implements IMovieRepository {
   }
 
   async search(props: MovieSearchParams): Promise<MovieSearchResult> {
-    const offset = (props.page - 1) * props.perPage;
-    const limit = props.perPage;
+    const { page, perPage, orderBy, orderDirection, filter } = props;
+
+    const offset = (page - 1) * perPage;
+    const limit = perPage;
     const [movies, moviesCount] = await this.movieModelRepository.findAndCount({
       where: [
-        { title: props.filter ? ILike(`%${props.filter}%`) : undefined },
-        { description: props.filter ? ILike(`%${props.filter}%`) : undefined },
+        { title: filter ? ILike(`%${filter}%`) : undefined },
+        { description: filter ? ILike(`%${filter}%`) : undefined },
       ],
       order:
-        props.orderBy && this.sortableFields.includes(props.orderBy)
-          ? { [props.orderBy]: props.orderDirection }
+        orderBy && this.sortableFields.includes(orderBy)
+          ? { [orderBy]: orderDirection.toUpperCase() }
           : { createdAt: "DESC" },
       skip: offset,
       take: limit,
@@ -76,8 +84,8 @@ export class MovieTypeOrmRepository implements IMovieRepository {
     return new MovieSearchResult({
       items: movies.map((model) => MovieModelMapper.toEntity(model)),
       total: moviesCount,
-      currentPage: props.page,
-      perPage: props.page,
+      currentPage: page,
+      perPage: perPage,
     });
   }
 

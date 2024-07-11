@@ -1,4 +1,4 @@
-import { IUseCase } from "./../../../../shared/application/IUseCase.interface";
+import { IUseCase } from "../../../../shared/application/usecase.interface";
 import { User } from "../../../../domain/user/user.entity";
 import { UserTypeOrmRepository } from "../../../../infrastructure/user/repository/typeorm/user-typeorm.repository";
 import { UserOutput, UserOutputMapper } from "./user.output";

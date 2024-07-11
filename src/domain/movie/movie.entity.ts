@@ -83,7 +83,7 @@ export class Movie extends BaseEntity {
   }
 
   changeReleaseDate(releaseDate: Date) {
-    this.releaseDate = releaseDate;
+    this.releaseDate = new Date(releaseDate);
   }
 
   toJSON() {

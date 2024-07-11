@@ -10,6 +10,9 @@ import { CustomJwtModule } from "./shared/infrastructure/services/jwt/jwt.module
 import { APP_FILTER } from "@nestjs/core";
 import { HttpExceptionFilter } from "./shared/infrastructure/interceptors/http-exception.filter";
 import { MovieModule } from "./infrastructure/movie/module/movie.module";
+import { CacheModule } from "@nestjs/cache-manager";
+import { RedisConfig } from "./infrastructure/config/redis/redis.config";
+import { CustomCacheModule } from "./shared/infrastructure/services/cache/cache.module";
 
 @Module({
   imports: [
@@ -19,11 +22,13 @@ import { MovieModule } from "./infrastructure/movie/module/movie.module";
     CustomJwtModule,
     AuthModule,
     PassportModule,
+    CustomCacheModule,
     TypeOrmModule.forRoot(typeormConfig.getTypeOrmConfig()),
     JwtModule.register({
       secret: process.env.JWT_SECRET,
       signOptions: { expiresIn: "60m" },
     }),
+    CacheModule.register(RedisConfig.getRedisConfig()),
   ],
   controllers: [],
   providers: [

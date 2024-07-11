@@ -1,5 +1,6 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { IsString, IsOptional } from "class-validator";
+import { Type } from "class-transformer";
+import { IsString, IsOptional, IsDate } from "class-validator";
 
 export class UpdateMovieInput {
   @ApiProperty({
@@ -34,6 +35,7 @@ export class UpdateMovieInput {
     description: "The movie's release date",
   })
   @IsOptional()
-  @IsString()
+  @IsDate()
+  @Type(() => Date)
   releaseDate: Date;
 }

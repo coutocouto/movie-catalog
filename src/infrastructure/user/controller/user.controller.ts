@@ -1,9 +1,9 @@
 import { Controller, Post, Body } from "@nestjs/common";
 import { CreateUserUseCase } from "../../../application/user/use-cases/create-user/create-user.usecase";
 import { CreateUserInput } from "../../../application/user/use-cases/create-user/create-user.input";
-import { ApiOperation, ApiResponse } from "@nestjs/swagger";
+import { ApiOperation, ApiResponse, ApiTags } from "@nestjs/swagger";
 import { UserOutput } from "../../../application/user/use-cases/create-user/user.output";
-
+@ApiTags("users")
 @Controller("users")
 export class UserController {
   constructor(private readonly createUserUseCase: CreateUserUseCase) {}

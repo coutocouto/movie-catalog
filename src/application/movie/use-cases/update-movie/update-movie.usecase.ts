@@ -1,6 +1,6 @@
 import { MovieOutputMapper } from "./../common/movie.output";
 import { IMovieRepository } from "../../../../domain/movie/movie.repository";
-import { IUseCase } from "../../../../shared/application/IUseCase.interface";
+import { IUseCase } from "../../../../shared/application/usecase.interface";
 import { EntityNotFound } from "../../../../shared/domain/exceptions/entity-not-found.exception";
 import { EntityValidationError } from "../../../../shared/domain/validators/validation.error";
 import { MovieOutput } from "../common/movie.output";
@@ -21,6 +21,7 @@ export class UpdateMovieUseCase
     input.description && movie.changeDescription(input.description);
     input.category && movie.changeCategory(input.category);
     input.genre && movie.changeGenre(input.genre);
+    input.releaseDate && movie.changeReleaseDate(input.releaseDate);
 
     if (movie.notification.hasErrors()) {
       throw new EntityValidationError(movie.notification.toJSON());

@@ -6,7 +6,6 @@ import { Notification } from "../../shared/domain/validators/notification";
 export class MovieRules {
   @MaxLength(255, { groups: ["title"] })
   title: string;
-
   constructor(entity: Movie) {
     Object.assign(this, entity);
   }

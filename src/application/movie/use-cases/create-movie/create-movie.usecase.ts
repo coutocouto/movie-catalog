@@ -3,7 +3,7 @@ import { MovieTypeOrmRepository } from "../../../../infrastructure/movie/reposit
 import { EntityNotFound } from "../../../../shared/domain/exceptions/entity-not-found.exception";
 import { EntityValidationError } from "../../../../shared/domain/validators/validation.error";
 import { MovieOutput, MovieOutputMapper } from "../common/movie.output";
-import { IUseCase } from "./../../../../shared/application/IUseCase.interface";
+import { IUseCase } from "../../../../shared/application/usecase.interface";
 import { CreateMovieInput } from "./create-movie.input";
 
 export class CreateMovieUseCase
