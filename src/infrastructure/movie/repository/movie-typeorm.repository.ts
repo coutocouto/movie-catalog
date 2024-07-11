@@ -31,6 +31,12 @@ export class MovieTypeOrmRepository implements IMovieRepository {
     return MovieModelMapper.toEntity(model);
   }
 
+  async createMany(entities: Movie[]): Promise<Movie[]> {
+    const models = entities.map((entity) => MovieModelMapper.toModel(entity));
+    await this.movieModelRepository.save(models);
+    return models.map((model) => MovieModelMapper.toEntity(model));
+  }
+
   async update(entity: Movie): Promise<Movie> {
     const { movieId, ...rest } = MovieModelMapper.toModel(entity);
     await this.movieModelRepository.update(movieId, rest);
@@ -61,6 +67,10 @@ export class MovieTypeOrmRepository implements IMovieRepository {
 
   async existsByTitle(title: string) {
     return await this.movieModelRepository.existsBy({ title });
+  }
+
+  async findByTitle(title: string) {
+    return await this.movieModelRepository.findOne({ where: { title } });
   }
 
   async search(props: MovieSearchParams): Promise<MovieSearchResult> {

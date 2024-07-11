@@ -2,7 +2,7 @@ import { JwtService } from "@nestjs/jwt";
 import { UserTypeOrmRepository } from "../../../../infrastructure/user/repository/typeorm/user-typeorm.repository";
 import { BcryptService } from "../../../../shared/infrastructure/services/bcrypt/bcrypt.service";
 import { SignInUseCase } from "../sign-in.usecase";
-import { UserFakeBuilder } from "../../../../domain/user/user.fake";
+import { UserFakeBuilder } from "../../../../domain/user/user-fake.builder";
 
 describe("SignInUseCase", () => {
   let signInUseCase: SignInUseCase;

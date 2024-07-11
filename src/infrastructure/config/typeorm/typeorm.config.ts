@@ -30,7 +30,6 @@ class TypeormConfig {
       database: this.getValue("POSTGRES_DATABASE"),
       entities: [__dirname + "../../../**/**/*.model{.ts,.js}"],
       synchronize: true,
-      logging: true,
     };
   }
 }

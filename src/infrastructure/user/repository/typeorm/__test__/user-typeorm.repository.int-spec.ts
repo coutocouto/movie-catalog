@@ -2,7 +2,7 @@ import { Test, TestingModule } from "@nestjs/testing";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { UserModel } from "../user.model";
 import { UserTypeOrmRepository } from "../user-typeorm.repository";
-import { UserFakeBuilder } from "../../../../../domain/user/user.fake";
+import { UserFakeBuilder } from "../../../../../domain/user/user-fake.builder";
 import { SearchParams } from "../../../../../shared/domain/repository/search-params";
 
 describe("user typeorm repository int test", () => {

@@ -1,4 +1,4 @@
-import { UserFakeBuilder } from "../../../../../domain/user/user.fake";
+import { UserFakeBuilder } from "../../../../../domain/user/user-fake.builder";
 import { UserTypeOrmRepository } from "../../../../../infrastructure/user/repository/typeorm/user-typeorm.repository";
 import { EntityAlreadyExists } from "../../../../../shared/domain/exceptions/entity-already-exists.exception";
 import { EntityValidationError } from "../../../../../shared/domain/validators/validation.error";

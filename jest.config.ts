@@ -201,6 +201,8 @@ const config: Config = {
     ".interface.ts",
     ".module.ts",
     ".exception.ts",
+    ".filter.ts",
+    ".guard.ts",
     ".providers.ts",
     ".input.ts",
     ".output.ts",

@@ -8,7 +8,7 @@ import { PassportModule } from "@nestjs/passport";
 import { AuthModule } from "./infrastructure/auth/module/auth.module";
 import { CustomJwtModule } from "./shared/infrastructure/services/jwt/jwt.module";
 import { APP_FILTER } from "@nestjs/core";
-import { HttpExceptionFilter } from "./shared/infrastructure/interceptors/http-exception.filter";
+import { HttpExceptionFilter } from "./shared/infrastructure/filter/http-exception.filter";
 import { MovieModule } from "./infrastructure/movie/module/movie.module";
 import { CacheModule } from "@nestjs/cache-manager";
 import { RedisConfig } from "./infrastructure/config/redis/redis.config";

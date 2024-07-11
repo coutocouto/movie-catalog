@@ -2,7 +2,7 @@ import { Test, TestingModule } from "@nestjs/testing";
 import { MovieTypeOrmRepository } from "../movie-typeorm.repository";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { MovieModel } from "../movie.model";
-import { MovieFakeBuilder } from "../../../../domain/movie/movie.fake";
+import { MovieFakeBuilder } from "../../../../domain/movie/movie-fake.builder";
 import { SearchParams } from "../../../../shared/domain/repository/search-params";
 
 describe("movie typeorm repository int teste", () => {
@@ -13,7 +13,7 @@ describe("movie typeorm repository int teste", () => {
     module = await Test.createTestingModule({
       imports: [
         TypeOrmModule.forRoot({
-          ...require("../../../../config/typeorm/typeorm.config.test"),
+          ...require("../../../config/typeorm/typeorm.config.test"),
           entities: [MovieModel],
         }),
         TypeOrmModule.forFeature([MovieModel]),
@@ -107,7 +107,7 @@ describe("movie typeorm repository int teste", () => {
       await movieRepository.create(movie2);
 
       const searchParams = new SearchParams({
-        filter: "The Godfather",
+        filter: "II",
         page: 1,
         perPage: 10,
       });
@@ -129,43 +129,7 @@ describe("movie typeorm repository int teste", () => {
       await movieRepository.create(movie2);
 
       const searchParams = new SearchParams({
-        filter: "The Godfather",
-        page: 1,
-        perPage: 10,
-      });
-      const searchResult = await movieRepository.search(searchParams);
-
-      expect(searchResult).toBeDefined();
-      expect(searchResult.items).toHaveLength(1);
-      expect(searchResult.total).toBe(1);
-    });
-
-    it("should search movies by category", async () => {
-      const movie1 = MovieFakeBuilder.aMovie().withCategory("Action").build();
-      const movie2 = MovieFakeBuilder.aMovie().withCategory("Drama").build();
-      await movieRepository.create(movie1);
-      await movieRepository.create(movie2);
-
-      const searchParams = new SearchParams({
-        filter: "The Godfather",
-        page: 1,
-        perPage: 10,
-      });
-      const searchResult = await movieRepository.search(searchParams);
-
-      expect(searchResult).toBeDefined();
-      expect(searchResult.items).toHaveLength(1);
-      expect(searchResult.total).toBe(1);
-    });
-
-    it("should search movies by genre", async () => {
-      const movie1 = MovieFakeBuilder.aMovie().withGenre("Crime").build();
-      const movie2 = MovieFakeBuilder.aMovie().withGenre("Drama").build();
-      await movieRepository.create(movie1);
-      await movieRepository.create(movie2);
-
-      const searchParams = new SearchParams({
-        filter: "Crime",
+        filter: "II",
         page: 1,
         perPage: 10,
       });

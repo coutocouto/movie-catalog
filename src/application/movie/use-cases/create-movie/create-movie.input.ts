@@ -33,4 +33,13 @@ export class CreateMovieInput {
   @IsNotEmpty()
   @IsString()
   releaseDate: Date;
+
+  constructor(props: CreateMovieInput) {
+    if (!props) return;
+    this.title = props.title;
+    this.description = props.description;
+    this.category = props.category;
+    this.genre = props.genre;
+    this.releaseDate = props.releaseDate;
+  }
 }

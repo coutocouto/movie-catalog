@@ -8,8 +8,6 @@ export class CustomCacheService implements ICacheService {
   constructor(@Inject(CACHE_MANAGER) private cacheManager: Cache) {}
 
   async get<T>(key: string): Promise<T | null> {
-    console.log("🚀 ~ CustomCacheService ~ cacheManager:", this.cacheManager);
-
     return await this.cacheManager.get<T>(key);
   }
 

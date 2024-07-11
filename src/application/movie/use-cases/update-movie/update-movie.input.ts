@@ -38,4 +38,8 @@ export class UpdateMovieInput {
   @IsDate()
   @Type(() => Date)
   releaseDate: Date;
+
+  constructor(props: UpdateMovieInput) {
+    Object.assign(this, props);
+  }
 }
