@@ -9,6 +9,7 @@ import {
   HttpCode,
   Delete,
   Query,
+  UseGuards,
 } from "@nestjs/common";
 import { ApiOperation, ApiResponse, ApiTags } from "@nestjs/swagger";
 import { CreateMovieInput } from "../../../application/movie/use-cases/create-movie/create-movie.input";
@@ -21,6 +22,9 @@ import {
   ListMovieInput,
   ListMovieUseCase,
 } from "../../../application/movie/use-cases/list-movie/list-movie.usecase";
+import { JwtAuthGuard } from "../../../shared/infrastructure/guards/jwt-auth.guard";
+
+@UseGuards(JwtAuthGuard)
 @ApiTags("movies")
 @Controller("movies")
 export class MovieController {

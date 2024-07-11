@@ -11,7 +11,6 @@ async function bootstrap() {
     .setTitle("Movie Catalog")
     .setDescription("A API to manage movies")
     .setVersion("1.0")
-    .addTag("movie")
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
