@@ -199,12 +199,11 @@ const config: Config = {
   coveragePathIgnorePatterns: [
     "/node_modules/",
     ".interface.ts",
-    "shared/testing",
-    "shared-module/testing",
-    "validator-rules.ts",
-    "-fixture.ts",
+    ".module.ts",
+    ".exception.ts",
+    ".providers.ts",
     ".input.ts",
-    ".d.ts",
+    ".output.ts",
   ],
   coverageThreshold: {
     global: {
