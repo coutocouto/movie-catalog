@@ -1,5 +1,4 @@
 import { BaseEntity } from "../../shared/domain/base.entity";
-import { UserFakeBuilder } from "./user.fake";
 import { UserValidatorFactory } from "./user.validator";
 import { v4 as uuidv4 } from "uuid";
 
@@ -44,10 +43,6 @@ export class User extends BaseEntity {
   validate(fields?: string[]) {
     const validator = UserValidatorFactory.create();
     return validator.validate(this.notification, this, fields);
-  }
-
-  static fake() {
-    return UserFakeBuilder;
   }
 
   changeName(name: string) {

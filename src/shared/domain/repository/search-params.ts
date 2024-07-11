@@ -1,4 +1,4 @@
-export type OrderDirection = "asc" | "desc";
+export type OrderDirection = "ASC" | "DESC";
 
 export type SearchParamsConstructorProps<Filter = string> = {
   page?: number;
@@ -74,7 +74,7 @@ export class SearchParams<Filter = string> {
       return;
     }
     const dir = `${value}`.toLowerCase();
-    this._orderDirection = dir !== "asc" && dir !== "desc" ? "asc" : dir;
+    this._orderDirection = dir !== "ASC" && dir !== "DESC" ? "ASC" : dir;
   }
 
   get filter(): Filter | null {

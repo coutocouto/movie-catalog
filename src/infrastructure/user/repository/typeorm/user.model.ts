@@ -1,17 +1,17 @@
-import { Column, Entity } from "typeorm";
+import { BaseEntity, Column, Entity } from "typeorm";
 import { User } from "../../../../domain/user/user.entity";
 
-@Entity()
-export class UserModel {
+@Entity({ name: "users" })
+export class UserModel extends BaseEntity {
   @Column({ primary: true })
   userId: string;
-  @Column()
+  @Column({ nullable: false })
   name: string;
-  @Column()
+  @Column({ unique: true })
   email: string;
-  @Column()
+  @Column({ nullable: false })
   password: string;
-  @Column()
+  @Column({ nullable: false })
   createdAt: Date;
 
   static from(user: User) {
